@@ -1,11 +1,11 @@
 variable "cluster_name" {
   description = "Variable to provide your desired name for the cluster. The script will create a random name if this is empty"
   type        = string
-  default     = ""
+  default     = "jenkinsx"
 }
 variable "location" {
   type        = string
-  default     = "australiaeast"
+  default     = "canadacentral"
   description = "The Azure region in to which to provision the cluster"
 }
 
@@ -16,14 +16,17 @@ variable "location" {
 variable "jx_git_url" {
   description = "URL for the Jenkins X cluster git repository"
   type        = string
+  default     = "https://github.com/xqianwang/jx3-azure-keyvault"
 }
 variable "jx_bot_username" {
   description = "Bot username used to interact with the Jenkins X cluster git repository"
   type        = string
+  default     = "xqianwang"
 }
 variable "jx_bot_token" {
   description = "Bot token used to interact with the Jenkins X cluster git repository"
   type        = string
+  default     = "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"
 }
 
 // ----------------------------------------------------------------------------
@@ -33,7 +36,7 @@ variable "jx_bot_token" {
 variable "node_count" {
   description = "The number of worker nodes to use for the cluster"
   type        = number
-  default     = 2
+  default     = 4
 }
 variable "node_size" {
   type        = string
@@ -47,22 +50,22 @@ variable "dns_prefix" {
 }
 variable "cluster_version" {
   type        = string
-  default     = "1.20.7"
+  default     = "1.20.13"
   description = "Kubernetes version to use for the AKS cluster"
 }
 variable "network_resource_group_name" {
   type        = string
-  default     = ""
+  default     = "jenkinsxnetwork"
   description = "The name of the resource group in to which to provision network resources. The script will create a random name if this is empty"
 }
 variable "cluster_resource_group_name" {
   type        = string
-  default     = ""
+  default     = "jenkinscluster"
   description = "The name of the resource group in to which to provision AKS managed cluster. The script will create a random name if this is empty"
 }
 variable "cluster_node_resource_group_name" {
   type        = string
-  default     = ""
+  default     = "jenkinsx"
   description = "Resource group name in which to provision AKS cluster nodes. The script will create a random name if this is empty"
 }
 variable "vnet_cidr" {
@@ -77,7 +80,7 @@ variable "subnet_cidr" {
 }
 variable "network_name" {
   type        = string
-  default     = ""
+  default     = "jenkins_vnet"
   description = "The name of the Virtual Network in Azure to be created. The script will create a random name if this is empty"
 }
 variable "cluster_network_model" {
@@ -87,12 +90,12 @@ variable "cluster_network_model" {
 }
 variable "subnet_name" {
   type        = string
-  default     = ""
+  default     = "jenkins_subnet"
   description = "The name of the subnet in Azure to be created. The script will create a random name if this is empty"
 }
 variable "enable_log_analytics" {
   type        = bool
-  default     = false
+  default     = true
   description = "Flag to indicate whether to enable Log Analytics integration for cluster"
 }
 variable "logging_retention_days" {
@@ -107,28 +110,28 @@ variable "logging_retention_days" {
 
 variable "apex_domain_integration_enabled" {
   type        = bool
-  default     = false
+  default     = true
   description = "Flag that when set attempts to create delegation records in apex domain to point to domain created by this module"
 }
 variable "apex_domain" {
   type        = string
   description = "The name of the parent/apex domain in which to create this domain zone, e.g. jenkins-x.io. Required if dns_enabled set to true"
-  default     = ""
+  default     = "zafin-jenkins-x.com"
 }
 variable "subdomain" {
   type        = string
   description = "The subdomain name of the zone to create, e.g. dev-subdomain."
-  default     = ""
+  default     = "dev"
 }
 variable "apex_resource_group_name" {
   type        = string
   description = "The resource group in which the Azure DNS apex domain resides. Required if apex_domain_integration_enabled is true"
-  default     = ""
+  default     = "zafindns"
 }
 variable "dns_resource_group_name" {
   type        = string
   description = "Resource group in which to create the Azure DNS zone. The script will create a random name if this is empty"
-  default     = ""
+  default     = "jeninsxdns"
 }
 
 // ----------------------------------------------------------------------------
@@ -143,12 +146,12 @@ variable "key_vault_enabled" {
 variable "key_vault_resource_group_name" {
   type        = string
   description = "Resource group to create in which to place key vault"
-  default     = ""
+  default     = "jenkins_keyvault"
 }
 variable "key_vault_name" {
   type        = string
   description = "Name of Azure Key Vault to create"
-  default     = ""
+  default     = "jenkinsxazurekv"
 }
 variable "key_vault_sku" {
   type        = string
@@ -169,13 +172,13 @@ variable "registry_resource_group_name" {
 variable "use_existing_acr_name" {
   description = "Name of the existing ACR that you would like to use, e.g. use this in multicluster setup, when you want to use DEV cluster ACR."
   type        = string
-  default     = null
+  default     = "zafinDevRegistry"
 }
 
 variable "use_existing_acr_resource_group_name" {
   description = "Name of the resources group of the existing ACR that you would like to use, e.g. use this in multicluster setup, when you want to use DEV cluster ACR."
   type        = string
-  default     = null
+  default     = "zafin-container-registry"
 }
 
 
@@ -186,5 +189,5 @@ variable "use_existing_acr_resource_group_name" {
 variable "storage_resource_group_name" {
   type        = string
   description = "Resource group to create in which to place storage accounts"
-  default     = ""
+  default     = "jenkinsxstorage"
 }

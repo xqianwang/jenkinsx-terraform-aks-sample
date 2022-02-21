@@ -16,7 +16,7 @@ variable "location" {
 variable "jx_git_url" {
   description = "URL for the Jenkins X cluster git repository"
   type        = string
-  default     = "https://github.com/xqianwang/jenkinsx-sample-azure"
+  default     = "https://github.com/xqianwang/jx3-azure-keyvault"
 }
 variable "jx_bot_username" {
   description = "Bot username used to interact with the Jenkins X cluster git repository"
@@ -141,7 +141,7 @@ variable "dns_resource_group_name" {
 variable "key_vault_enabled" {
   type        = string
   description = "Flag to indicate whether to provision Azure Key Vault for secret storage"
-  default     = false
+  default     = true
 }
 variable "key_vault_resource_group_name" {
   type        = string
@@ -151,7 +151,7 @@ variable "key_vault_resource_group_name" {
 variable "key_vault_name" {
   type        = string
   description = "Name of Azure Key Vault to create"
-  default     = "jenkinsxazkv"
+  default     = "jenkinsx_azkv"
 }
 variable "key_vault_sku" {
   type        = string

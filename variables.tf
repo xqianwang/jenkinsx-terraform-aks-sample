@@ -151,7 +151,7 @@ variable "key_vault_resource_group_name" {
 variable "key_vault_name" {
   type        = string
   description = "Name of Azure Key Vault to create"
-  default     = "jenkinsxazkvault"
+  default     = "jxazurekv"
 }
 variable "key_vault_sku" {
   type        = string

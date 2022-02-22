@@ -1,7 +1,7 @@
 variable "cluster_name" {
   description = "Variable to provide your desired name for the cluster. The script will create a random name if this is empty"
   type        = string
-  default     = "jenkinsx"
+  default     = "jxcluster"
 }
 variable "location" {
   type        = string
@@ -55,17 +55,17 @@ variable "cluster_version" {
 }
 variable "network_resource_group_name" {
   type        = string
-  default     = "jenkinsxnetwork"
+  default     = "jxnetwork"
   description = "The name of the resource group in to which to provision network resources. The script will create a random name if this is empty"
 }
 variable "cluster_resource_group_name" {
   type        = string
-  default     = "jenkinscluster"
+  default     = "jxcluster"
   description = "The name of the resource group in to which to provision AKS managed cluster. The script will create a random name if this is empty"
 }
 variable "cluster_node_resource_group_name" {
   type        = string
-  default     = "jenkinsx"
+  default     = "jx_nodes"
   description = "Resource group name in which to provision AKS cluster nodes. The script will create a random name if this is empty"
 }
 variable "vnet_cidr" {
@@ -95,7 +95,7 @@ variable "subnet_name" {
 }
 variable "enable_log_analytics" {
   type        = bool
-  default     = true
+  default     = false
   description = "Flag to indicate whether to enable Log Analytics integration for cluster"
 }
 variable "logging_retention_days" {
@@ -146,12 +146,12 @@ variable "key_vault_enabled" {
 variable "key_vault_resource_group_name" {
   type        = string
   description = "Resource group to create in which to place key vault"
-  default     = "jenkins_keyvault"
+  default     = "jx_kv"
 }
 variable "key_vault_name" {
   type        = string
   description = "Name of Azure Key Vault to create"
-  default     = "jenkinsxazkv"
+  default     = "jxakeyvault"
 }
 variable "key_vault_sku" {
   type        = string

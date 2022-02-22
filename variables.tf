@@ -146,12 +146,12 @@ variable "key_vault_enabled" {
 variable "key_vault_resource_group_name" {
   type        = string
   description = "Resource group to create in which to place key vault"
-  default     = "jenkins_keyvault"
+  default     = "jxkeyvault"
 }
 variable "key_vault_name" {
   type        = string
   description = "Name of Azure Key Vault to create"
-  default     = "jxazurekv"
+  default     = "jxakv"
 }
 variable "key_vault_sku" {
   type        = string
@@ -189,5 +189,5 @@ variable "use_existing_acr_resource_group_name" {
 variable "storage_resource_group_name" {
   type        = string
   description = "Resource group to create in which to place storage accounts"
-  default     = "jenkinsxstorage"
+  default     = "jxstorage"
 }

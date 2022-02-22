@@ -146,12 +146,12 @@ variable "key_vault_enabled" {
 variable "key_vault_resource_group_name" {
   type        = string
   description = "Resource group to create in which to place key vault"
-  default     = "jxkeyvault"
+  default     = "jenkins_keyvault"
 }
 variable "key_vault_name" {
   type        = string
   description = "Name of Azure Key Vault to create"
-  default     = "jxakv"
+  default     = "jenkinsxazkv"
 }
 variable "key_vault_sku" {
   type        = string
